@@ -1,0 +1,42 @@
+There are given N ropes of different lengths, we need to connect these ropes into one rope. The cost to connect two ropes is equal to sum of their lengths. The task is to connect the ropes with minimum cost.
+
+Example:
+
+Input:
+n = 5
+arr[] = {4, 2, 7, 6, 9}
+Output:
+62 
+
+Explanation:
+First, connect ropes 4 and 2, which makes the array {6,7,6,9}. Cost of this 
+operation 4+2 = 6. Next, add ropes 6 and 6, which results in {12,7,9}. 
+Cost of this operation 6+6 = 12.
+Then, add 7 and 9, which makes the array {12,16}. 
+Cost of this operation 7+9 = 16. And finally, add these two which gives {28}.
+Hence, the total cost is 6 + 12 + 16 + 28 = 62.
+Your Task:
+
+You are given an input type='text' element where you can type comma separated integers (for e.g., 12, 14, 5, 6, 6, 7) and submit the form.
+Take those comma separated integers as the lengths of ropes and print the minimum cost of ropes inside the <div id="result"></div> element.
+
+----------------====================================-------------------------------------=========================================
+
+function calculateMinCost() {
+  //your code here
+var res = 0;
+	var cost = 0;
+	var inputArray = document.getElementById("rope-lengths").value;
+
+	inputArray = inputArray.split(',').map(Number);
+	console.log(inputArray);
+	for(let i = 0;i< inputArray.length -1;i+=0) {
+		if (inputArray.length == 0) break;
+		inputArray = inputArray.sort((a,b) => b-a);
+		res = inputArray.pop()+ inputArray.pop();
+		cost += res;
+		inputArray[inputArray.length] = res; }
+
+	document.getElementById("result").innerHTML = cost;
+	}
+  
