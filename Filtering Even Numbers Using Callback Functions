@@ -1,0 +1,36 @@
+function filterEvenNumbers(arr, isEven) {
+  // Write your code here
+  // Do not console.log, just return the result.
+	const narr = [];
+   for(let i = 0;i<arr.length;i++){
+	   let ref = isEven(arr[i]);
+	   if(ref==0) {
+		   narr.push(arr[i]);
+	   }
+   }
+	return narr;
+}
+
+const isEven = (num) => num % 2 === 0;
+
+const readline = require("readline");
+
+const input = [];
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+rl.on("line", function (cmd) {
+  input.push(cmd);
+});
+
+rl.on("close", function (cmd) {
+  Main(input);
+});
+
+function Main(input) {
+  const arr = JSON.parse(input[0]).map((e) => parseInt(e, 10));
+  console.log(filterEvenNumbers(arr, isEven));
+}
